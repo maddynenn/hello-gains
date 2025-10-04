@@ -111,7 +111,7 @@ export default function YourBox() {
 
 	return (
 		<div className="product-page">
-			<h1 className="page-title">Hi, {user.username || "Guest"}, here is your box</h1>
+			<h1 className="page-title">Hi {user.username || "Guest"}, here is your box</h1>
 
 			<div className="product-grid">
         {products.map((p, index) => (
