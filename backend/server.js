@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
 const port = 3000;
+app.use(express.json());
 
 const users = [
 	{ id: 1, name: "Alice" },
@@ -12,11 +13,11 @@ app.get("/", (req, res) => {
 	res.send("hello world");
 });
 
-app.get("/users", (req, res) => {
+app.get("/api/users", (req, res) => {
 	res.status(200).send({ users: users });
 });
 
-app.get("/users/:id", (req, res) => {
+app.get("/api/users/:id", (req, res) => {
 	const userId = parseInt(req.params.id);
 
 	let user;
@@ -33,7 +34,16 @@ app.get("/users/:id", (req, res) => {
 	}
 });
 
-app.post("/api/users", (req, res) => {});
+app.post("/api/users", (req, res) => {
+	const newUser = req.body;
+	if (!newUser) {
+		res.status(400).send({ message: "need to post a user" });
+	}
+
+	users.push(newUser);
+	newUser.id = users.length + 1;
+	res.status(201).send({ newUser: newUser, message: "successfully added new user" });
+});
 
 app.listen(port, () => {
 	console.log(`Express app listening at http://localhost:${port}`);
