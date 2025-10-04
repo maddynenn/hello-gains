@@ -20,7 +20,7 @@ export default function LoginForm() {
 			
 			if (userid) {
 				localStorage.setItem("userId", userid);
-				navigate("/onboarding");
+				navigate("/your-box");
 			} else {
 				alert("User not found");
 			}
