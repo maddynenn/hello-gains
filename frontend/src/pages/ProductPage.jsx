@@ -9,12 +9,6 @@ import strawberryShake from "../assets/strawberry.jpeg";
 export default function ProductPage() {
     const products = [
     {
-      name: "Owen Sharpe",
-      quantity: 3,
-      total: 50,
-      image: shoe,
-    },
-    {
       name: "Chocolate Box",
       quantity: 12,
       total: 12,
@@ -37,6 +31,12 @@ export default function ProductPage() {
       quantity: 3,
       total: 10,
       image: strawberryShake,
+    },
+    {
+      name: "Owen Sharpe",
+      quantity: 3,
+      total: 50,
+      image: shoe,
     }
   ];
 
