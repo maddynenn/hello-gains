@@ -3,6 +3,7 @@ import '../style/LandingPage.css';
 import { Link } from 'react-router-dom';
 import owenImg from '../assets/Owen.png';
 import henryImg from '../assets/Henry.png';
+import logoImg from '../assets/hellogains-logo.png';
 
 const Testimonial = ({ name, role, rating, image, text }) => {
   return (
@@ -44,12 +45,33 @@ const LandingPage = () => {
 
   return (
     <div>
-      <Link to="/faq">FAQ</Link>
-      <div className="testimonials-container">
-        {testimonials.map((t, i) => (
-          <Testimonial key={i} {...t} />
-        ))}
-      </div>
+        <Link to="/faq">FAQ</Link>
+        <div className="landing-container">
+        <div className="logo-section">
+            <img src={logoImg} alt="Hello Gains" />
+        </div>
+        
+        <div className="testimonials-container">
+            {testimonials.map((t, i) => (
+            <div key={i} className="testimonial-card">
+                <div className="testimonial-header">
+                <img src={t.image} alt={t.name} className="testimonial-avatar" />
+                <div className="testimonial-info">
+                    <h3>{t.name}</h3>
+                    <p className="testimonial-role">{t.role}</p>
+                    <div className="testimonial-stars">
+                    {[...Array(5)].map((_, i) => (
+                        <span key={i}>★</span>
+                    ))}
+                    </div>
+                </div>
+                </div>
+                <p className="testimonial-text">{t.text}</p>
+                <div className="quote-mark">"</div>
+            </div>
+            ))}
+        </div>
+        </div>
     </div>
   );
 };
