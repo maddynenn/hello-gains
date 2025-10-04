@@ -60,6 +60,15 @@ app.post("/api/users", async (req, res) => {
 		res.status(500).send({ message: "database error" });
 	}
 });
+app.get("/api/users/emails", async (req, res) => {
+	try {
+		const result = await pool.query("SELECT email FROM users");
+		res.status(200).send({ emails: result.rows });
+	} catch (error) {
+		console.error("Database error fetching emails:", error);
+		res.status(500).send({ message: "database error" });
+	}
+});
 app.listen(port, () => {
 	console.log(`Express app listening at http://localhost:${port}`);
 });
