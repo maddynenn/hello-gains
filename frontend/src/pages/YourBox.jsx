@@ -34,5 +34,5 @@ export default function YourBox() {
 
 	if (loading) return <h1>Loading...</h1>;
 
-	return <h1>Hi, {user.name || "Guest"}, here is your box</h1>;
+	return <h1>Hi, {user.username || "Guest"}, here is your box</h1>;
 }

@@ -10,13 +10,24 @@ export default function LoginForm() {
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		console.log("Logging in with:", { email, password });
-
-		const data = await fetch(`http://localhost:3000/api/users`);
-		const user = data.users.find(u => u.email === email);
-		const userid = user ? user.userid : null;
-		localStorage.setItem("userId", userid)
-		
-		navigate("/onboarding");
+	
+		try {
+			const response = await fetch(`http://localhost:3000/api/users`);
+			const data = await response.json(); // Parse JSON from response
+			
+			const user = data.users.find(u => u.email === email);
+			const userid = user ? user.userid : null;
+			
+			if (userid) {
+				localStorage.setItem("userId", userid);
+				navigate("/onboarding");
+			} else {
+				alert("User not found");
+			}
+		} catch (error) {
+			console.error("Error fetching users:", error);
+			alert("Failed to login. Please try again.");
+		}
 	};
 
 	return (
