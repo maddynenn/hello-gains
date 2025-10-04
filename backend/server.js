@@ -24,20 +24,13 @@ app.get("/api/users", async (req, res) => {
 		res.status(500).send({ message: "database error" });
 	}
 });
-app.get("/api/users/:id", async (req, res) => {
+
+app.get("/api/users/emails", async (req, res) => {
 	try {
-		const userId = req.params.id;
-		const result = await pool.query(
-			"SELECT userid, username, email, age, sex, height, weight, goalid FROM users WHERE userid = $1",
-			[userId]
-		);
-		if (result.rows.length > 0) {
-			res.status(200).send({ user: result.rows[0] });
-		} else {
-			res.status(404).send({ message: "user not found" });
-		}
+		const result = await pool.query("SELECT email FROM users");
+		res.status(200).send({ emails: result.rows });
 	} catch (error) {
-		console.error(error);
+		console.error("Database error fetching emails:", error);
 		res.status(500).send({ message: "database error" });
 	}
 });
@@ -60,12 +53,20 @@ app.post("/api/users", async (req, res) => {
 		res.status(500).send({ message: "database error" });
 	}
 });
-app.get("/api/users/emails", async (req, res) => {
+app.get("/api/users/:id", async (req, res) => {
 	try {
-		const result = await pool.query("SELECT email FROM users");
-		res.status(200).send({ emails: result.rows });
+		const userId = req.params.id;
+		const result = await pool.query(
+			"SELECT userid, username, email, age, sex, height, weight, goalid FROM users WHERE userid = $1",
+			[userId]
+		);
+		if (result.rows.length > 0) {
+			res.status(200).send({ user: result.rows[0] });
+		} else {
+			res.status(404).send({ message: "user not found" });
+		}
 	} catch (error) {
-		console.error("Database error fetching emails:", error);
+		console.error(error);
 		res.status(500).send({ message: "database error" });
 	}
 });

@@ -7,11 +7,15 @@ export default function LoginForm() {
 	const [password, setPassword] = useState("");
 	const navigate = useNavigate();
 
-	const handleSubmit = (e) => {
+	const handleSubmit = async (e) => {
 		e.preventDefault();
 		console.log("Logging in with:", { email, password });
-		const userId = "1"; // replace with actual userId from api response
-		localStorage.setItem("userId", userId);
+
+		const data = await fetch(`http://localhost:3000/api/users`);
+		const user = data.users.find(u => u.email === email);
+		const userid = user ? user.userid : null;
+		localStorage.setItem("userId", userid)
+		
 		navigate("/onboarding");
 	};
 
