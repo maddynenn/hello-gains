@@ -1,2 +1,2 @@
 # hello-gains
-Hello Gains Hackathon 2025
+Hello Gains Hackathon 2025 KTP
