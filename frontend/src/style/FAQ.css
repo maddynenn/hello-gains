@@ -56,3 +56,8 @@
   font-weight: 700;
   line-height: 1.2;
 }
+
+.privacy-policy {
+    color: #999;
+    font-style: italic;
+}

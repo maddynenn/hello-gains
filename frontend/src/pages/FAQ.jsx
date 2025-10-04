@@ -39,6 +39,10 @@ export default function FAQ() {
 						perfect boxes recommended to you.
 					</p>
 				</div>
+
+				<div className="privacy-policy">
+					<p>Your data will only be used in conjunction with our privacy policy. We use protein cookies to remember you. We may store information on your device if our servers run out of space. For citizens of California or the European Union we will now be requesting permission before selling your information and/or organs. Our privacy policy supersedes the laws of the Commonwealth of Massachusetts. By creating our account you waive your right to self-defence.</p>
+				</div>
 			</div>
 
 			<div className="faq-logo">
