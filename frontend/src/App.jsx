@@ -1,5 +1,4 @@
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
-import AboutPage from "./pages/About";
 import CheckoutPage from "./pages/CheckoutPage";
 import FAQ from "./pages/FAQ";
 import LandingPage from "./pages/LandingPage";
@@ -19,7 +18,6 @@ function App() {
 				</nav>
 				<Routes>
 					<Route path="/" element={<LandingPage />} />
-					<Route path="/about" element={<AboutPage />} />
 					<Route path="/products" element={<ProductPage />} />
 					<Route path="/checkout" element={<CheckoutPage />} />
 					<Route path="/faq" element={<FAQ />} />
