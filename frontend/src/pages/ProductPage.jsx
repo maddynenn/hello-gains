@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "../style/ProductPage.css";
 import shoe from "../assets/Owen.png";
 import chocolateShake from "../assets/chocolate.jpeg";
@@ -7,7 +7,15 @@ import sodas from "../assets/sodas.webp";
 import strawberryShake from "../assets/strawberry.jpeg";
 
 export default function ProductPage() {
-    const products = [
+  const [confirmation, setConfirmation] = useState(null);
+
+  const products = [
+    {
+      name: "Owen Sharpe",
+      quantity: 3,
+      total: 50,
+      image: shoe,
+    },
     {
       name: "Chocolate Box",
       quantity: 12,
@@ -32,17 +40,18 @@ export default function ProductPage() {
       total: 10,
       image: strawberryShake,
     },
-    {
-      name: "Owen Sharpe",
-      quantity: 3,
-      total: 50,
-      image: shoe,
-    }
   ];
+
+  const handleBuy = (product) => {
+    setConfirmation(`✅ You bought ${product.name} for $${product.total}!`);
+    setTimeout(() => setConfirmation(null), 2500); // hide after 2.5s
+  };
 
   return (
     <div className="product-page">
       <h1 className="page-title">Our Products</h1>
+
+      {confirmation && <div className="confirmation">{confirmation}</div>}
 
       <div className="product-grid">
         {products.map((p, index) => (
@@ -53,6 +62,12 @@ export default function ProductPage() {
             <p className="product-quantity">{p.quantity}</p>
             <p>Total Price</p>
             <p className="product-price">${p.total}</p>
+            <button
+              className="buy-button"
+              onClick={() => handleBuy(p)}
+            >
+              Buy Now
+            </button>
           </div>
         ))}
       </div>
