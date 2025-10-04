@@ -1,9 +1,3 @@
-<<<<<<< Updated upstream
-import LoginPage from "./pages/LoginPage";
-
-function App() {
-  return <LoginPage />;
-=======
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 import LandingPage from './pages/LandingPage';
 import FAQ from './pages/FAQ';
@@ -17,7 +11,6 @@ function App() {
       </Routes>
     </BrowserRouter>
   );
->>>>>>> Stashed changes
 }
 
 export default App;
