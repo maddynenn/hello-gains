@@ -1,5 +1,6 @@
 import React from "react";
-import "../style/FAQ.css"; // optional — see style section below
+import "../style/FAQ.css";
+import logo from "../assets/hellogains-logo.png";
 
 export default function FAQ() {
   return (
@@ -36,17 +37,14 @@ export default function FAQ() {
           <p className="question">• Is this only for bulking/cutting?</p>
           <p className="answer">
             Nope! Our products are for anyone who wants to gain, maintain, or
-            even lose weight! Simply choose the relevant option when creating your
-            account and you will get the perfect boxes recommended to you.
+            even lose weight! Simply choose the relevant option when creating
+            your account and you will get the perfect boxes recommended to you.
           </p>
         </div>
       </div>
 
       <div className="faq-logo">
-        <img src="/hellogains-logo.png" alt="Hello Gains Logo" />
-        <h2>
-          HELLO <br /> GAINS
-        </h2>
+        <img src={logo} alt="Hello Gains Logo" />
       </div>
     </div>
   );
