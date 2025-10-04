@@ -1,5 +1,6 @@
-function LoginPage() {
-	return <h1>LoginPage</h1>;
-}
+import React from "react";
+import LoginForm from "../components/LoginForm";
 
-export default LoginPage;
+export default function LoginPage() {
+	return <LoginForm />;
+}
