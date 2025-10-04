@@ -47,8 +47,7 @@ const LandingPage = () => {
 
   return (
     <div>
-        <Link to="/faq">FAQ</Link>
-        <div className="landing-container">
+      <div className="landing-container">
         <div className="logo-section">
             <img src={logoImg} alt="Hello Gains" />
         </div>
